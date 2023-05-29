@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Utilise un formulaire HTML pour créer une nouvelle entrée dans la
- * table "Clients".
- */
 
 if (isset($_POST['submit'])) {
     require "../config.php";
@@ -27,7 +23,6 @@ if (isset($_POST['submit'])) {
         echo $sql . "<br>" . $error->getMessage();
     }
 
-	echo $_POST['Nom'] . " a été ajouté avec succès";
 
 }
 

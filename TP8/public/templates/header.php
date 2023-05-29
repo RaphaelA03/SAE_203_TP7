@@ -11,6 +11,5 @@
   </head>
 
   <body>
-    <h1>Simple gestion d'un magasin</h1>
   </body>
 </html>

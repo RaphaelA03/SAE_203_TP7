@@ -7,24 +7,21 @@
 
     <title>Système simple de gestion d'un magasin</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
 
   <body>
 
-    <?php include "templates/header.php"; ?>
 
-<ul>
-  <li>
-    <a href="create.php"><strong>Nouveau client</strong></a> - ajouter un client
-  </li>
-  <li>
-    <a href="produit.php"><strong>Nouveau Produit</strong></a> - ajouter un produit
-  </li>
-  <li>
-    <a href="commande.php"><strong>Commander</strong></a> - commander un produit  </li>
-</ul>
+    <div class="box">
+      <h1>Système simple de gestion d'un magasin</h1>
+      <div class="container">
+        <a href="create.php"><button class="up">Ajouter un client</button></a>
+        <a href="produit.php"><button class="up">Ajouter un produit</button></a>
+        <a href="commande.php"><button class="up">Commander un produit</button></a>
+      </div>
+    </div>
 
-<?php include "templates/footer.php"; ?>
+    <?php include "templates/footer.php"; ?>
   </body>
 </html>
