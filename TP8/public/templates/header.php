@@ -7,7 +7,7 @@
 
     <title>Simple gestion d'un magasin</title>
 
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="st.css" />
   </head>
 
   <body>

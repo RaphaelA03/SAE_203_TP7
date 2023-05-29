@@ -9,11 +9,14 @@
 
     <link rel="stylesheet" href="style.css" />
   </head>
-
+  
+ <?php include "templates/footer.php"; ?>
   <body>
 
+  <?php include "templates/header.php"; ?>
 
     <div class="box">
+      
       <h1>Système simple de gestion d'un magasin</h1>
       <div class="container">
         <a href="create.php"><button class="up">Ajouter un client</button></a>
@@ -23,5 +26,6 @@
     </div>
 
     <?php include "templates/footer.php"; ?>
+  <body>  
   </body>
 </html>
