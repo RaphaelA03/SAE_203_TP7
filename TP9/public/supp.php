@@ -53,7 +53,7 @@ if (isset($_POST['delete_product'])) {
       $connection = new PDO($dsn, $username, $password, $options);
       $id = $_POST['order_id'];
   
-      $sql = "DELETE FROM Commande WHERE CommandeID = :CommandeID";
+      $sql = "DELETE FROM Commande WHERE  = :CommandeID";
       $statement = $connection->prepare($sql);
       $statement->bindValue(':CommandeID', $id);
       $statement->execute();
