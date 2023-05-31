@@ -27,11 +27,17 @@
       } catch(PDOException $error) {
           echo "Erreur : " . $error->getMessage();
       }
-      echo $_POST['CodeProduit'] . " a été ajouté avec succès";
   }
 
   require "templates/header.php";
   ?>
+
+<?php if (isset($_POST['submit']) && $statement) { ?>
+    <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+        <p class="font-bold">La commande</p>
+        <p class="text-sm">a été passé avec succès</p>
+    </div>
+<?php } ?>
 
   <div class="flex justify-center items-center min-h-screen">
     <div class="w-full max-w-lg">
@@ -82,7 +88,9 @@
         </div>
         <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" name="submit" value="Enregistrer">
       </form>
-      <a href="index.php">Retour à l'accueil</a>
+      <div class="mt-4">
+      <a href="index.php" class="inline-block bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Retour</a>
+    </div>
     </div>
   </div>
     </div>

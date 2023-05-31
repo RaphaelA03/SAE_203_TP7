@@ -23,7 +23,7 @@
         <a href="create.php"><button class="up">Ajouter un client</button></a>
         <a href="produit.php"><button class="up">Ajouter un produit</button></a>
         <a href="commande.php"><button class="up">Commander un produit</button></a>
-        <a href="SAE203/SAE_203_TP7/TP8/login.html"><button class="up">Login</button></a>
+        <a href="/SAE203/SAE_203_TP7/TP8/login.html"><button class="up">Login</button></a>
       </div>
     </div>
 

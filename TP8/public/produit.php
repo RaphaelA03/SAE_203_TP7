@@ -8,14 +8,9 @@
 
 <?php
 
-/**
- * Utilise un formulaire HTML pour créer une nouvelle entrée dans la
- * table "Clients".
- */
 
 if (isset($_POST['submit'])) {
     require "../config.php";
-    //require "../common.php";
 
     try  {
         $connection = new PDO($dsn, $username, $password, $options);
@@ -43,8 +38,12 @@ if (isset($_POST['submit'])) {
 <?php require "templates/header.php"; ?>
 
 <?php if (isset($_POST['submit']) && $statement) { ?>
-    <blockquote><?php echo $_POST['CodeProduit']; ?> ajouté avec succès</blockquote>
+    <div class="bg-blue-100 border-t border-b border-blue-500 text-blue-700 px-4 py-3" role="alert">
+        <p class="font-bold"><?php echo $_POST['CodeProduit']; ?></p>
+        <p class="text-sm">a été ajouté avec succès</p>
+    </div>
 <?php } ?>
+
 </head>
 <body>
   <div class="flex justify-center items-center min-h-screen">
@@ -77,8 +76,8 @@ if (isset($_POST['submit'])) {
   <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" name="submit" value="Enregistrer">
 </form>
 
-
-      <a href="index.php">Retour à l'accueil</a>
+<div class="mt-4">
+      <a href="index.php" class="inline-block bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Retour</a>
     </div>
   </div>
 
