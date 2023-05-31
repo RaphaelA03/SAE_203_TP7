@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
 <?php
 
 /**
@@ -27,7 +35,6 @@ if (isset($_POST['submit'])) {
         echo $sql . "<br>" . $error->getMessage();
     }
 
-	echo $_POST['CodeProduit'] . " a été ajouté avec succès";
 
 }
 
@@ -38,19 +45,43 @@ if (isset($_POST['submit'])) {
 <?php if (isset($_POST['submit']) && $statement) { ?>
     <blockquote><?php echo $_POST['CodeProduit']; ?> ajouté avec succès</blockquote>
 <?php } ?>
+</head>
+<body>
+  <div class="flex justify-center items-center min-h-screen">
+    <div class="w-full max-w-lg">
+      <h2 class="text-2xl mb-4">Ajouter produit</h2>
 
-<h2>Ajouter un produit</h2>
-
-<form method="post">
-    <label for="CodeProduit">Code Produit</label>
-    <input type="text" name="CodeProduit" id="CodeProduit">
-    <label for="Libelle">Libelle</label>
-    <input type="text" name="Libelle" id="Libelle">
-    <label for="PrixUnitaire">Prix Unitaire</label>
-    <input type="text" name="PrixUnitaire" id="PrixUnitaire">
-    <input type="submit" name="submit" value="Submit">
+      <form class="w-full" method="post">
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="CodeProduit">
+        Code Produit
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="CodeProduit" name="CodeProduit" type="text" placeholder="Code Produit" required>
+    </div>
+    <div class="w-full md:w-1/2 px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="Prenom">
+        Libelle
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="Libelle" name="Libelle" type="text" placeholder="Libelle">
+    </div>
+  </div>
+  <div class="flex flex-wrap -mx-3 mb-6">
+    <div class="w-full px-3">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="Adresse">
+        Prix Unitaire
+      </label>
+      <input class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="PrixUnitaire" name="PrixUnitaire" type="text" placeholder="Prix Unitaire">
+    </div>
+  </div>
+  <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" name="submit" value="Enregistrer">
 </form>
 
-<a href="index.php">Retour à l'accueil</a>
 
-<?php require "templates/footer.php"; ?>
+      <a href="index.php">Retour à l'accueil</a>
+    </div>
+  </div>
+
+  <?php require "templates/footer.php"; ?>
+</body>
+</html>
