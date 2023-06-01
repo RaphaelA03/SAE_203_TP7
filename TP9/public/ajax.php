@@ -11,11 +11,14 @@
       $('#client_id').change(function() {
         var clientID = $(this).val();
         $.ajax({
-          url: 'get_url.php', 
+          url: 'get_url.php',
           type: 'POST',
           data: { client_id: clientID },
           success: function(response) {
             $('#product_id').html(response);
+          },
+          error: function(xhr, status, error) {
+            console.log(xhr.responseText);
           }
         });
       });
@@ -34,29 +37,6 @@
             </label>
             <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="client_id" name="client_id">
               <option value="">Sélectionnez un client</option>
-              <?php
-// Affichage des clients
-require "../config.php";
-
-try {
-  $connection = new PDO($dsn, $username, $password, $options);
-  $sql = "SELECT ID, Nom FROM Client"; // Vérifiez les noms de colonnes ici
-  $statement = $connection->prepare($sql);
-  $statement->execute();
-  $clients = $statement->fetchAll(PDO::FETCH_ASSOC);
-
-  foreach ($clients as $client) {
-    echo "<option value='" . $client['ID'] . "'>" . $client['Nom'] . "</option>"; // Utilisez les bonnes colonnes ici
-  }
-} catch (PDOException $error) {
-  echo "Erreur : " . $error->getMessage();
-}
-?>
-
-
-
-
-
             </select>
           </div>
         </div>
@@ -66,8 +46,9 @@ try {
             <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="product_id">
               Produit commandé
             </label>
-            <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="product_id" name="product_id">
+            <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="product_id">
               <option value="">Sélectionnez un client d'abord</option>
+              <div id="product_id"></div>
             </select>
           </div>
         </div>
@@ -75,39 +56,25 @@ try {
         <input class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" name="submit" value="Valider">
       </form>
 
-      <?php
-      // Affichage de l'adresse de livraison
-      if (isset($_POST['submit'])) {
-        $clientID = $_POST['client_id'];
-        $productID = $_POST['product_id'];
-
-        if (!empty($clientID) && !empty($productID)) {
-          try {
-            $connection = new PDO($dsn, $username, $password, $options);
-            $sql = "SELECT adresse_livraison FROM Commande WHERE ClientID = :clientID AND ProduitID = :productID";
-            $statement = $connection->prepare($sql);
-            $statement->bindValue(':clientID', $clientID);
-            $statement->bindValue(':productID', $productID);
-            $statement->execute();
-            $address = $statement->fetchColumn();
-
-            if ($address) {
-              echo "<p class='mt-4'><strong>Adresse de livraison :</strong> " . $address . "</p>";
-            } else {
-              echo "<p class='mt-4'>Aucune adresse de livraison trouvée.</p>";
-            }
-          } catch (PDOException $error) {
-            echo "Erreur : " . $error->getMessage();
-          }
-        }
-      }
-      ?>
-
       <div class="mt-8">
         <a href="index.php" class="inline-block bg-teal-500 hover:bg-teal-700 text-white font-bold py-2 px-4 rounded">Retour</a>
       </div>
     </div>
   </div>
 
+  <script>
+    $(document).ready(function() {
+      $.ajax({
+        url: 'get_clients.php',
+        type: 'GET',
+        success: function(response) {
+          $('#client_id').html(response);
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
+      });
+    });
+  </script>
 </body>
 </html>
