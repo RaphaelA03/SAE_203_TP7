@@ -24,7 +24,7 @@
         <a href="produit.php"><button class="up">Ajouter un produit</button></a>
         <a href="commande.php"><button class="up">Commander un produit</button></a>
         <a href="supp.php"><button class="up">Suppression</button></a>
-        <a href="/SAE203/SAE_203_TP7/TP9/public/ajax.php"><button class="up">Recherche</button></a>
+        <a href="/SAE203/SAE_203_TP7/TP9/ajax.php"><button class="up">Recherche</button></a>
         <a href="/SAE203/SAE_203_TP7/TP9/login.html"><button class="up">Login</button></a>
       </div>
     </div>

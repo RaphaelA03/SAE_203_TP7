@@ -3,17 +3,18 @@ require "config.php";
 
 try {
   $connection = new PDO($dsn, $username, $password, $options);
-  $sql = "SELECT ID, Nom FROM Client";
+
+  $sql = "SELECT ID, Nom, Prenom FROM Clients";
   $statement = $connection->prepare($sql);
   $statement->execute();
   $clients = $statement->fetchAll(PDO::FETCH_ASSOC);
 
-  $options = "<option value=''>Sélectionnez un client</option>";
+  $clientOptions = "";
   foreach ($clients as $client) {
-    $options .= "<option value='" . $client['ID'] . "'>" . $client['Nom'] . "</option>";
+    $clientOptions .= "<option value='" . $client['ID'] . "'>" . $client['Nom'] . " " . $client['Prenom'] . "</option>";
   }
 
-  echo $options;
+  echo $clientOptions;
 } catch (PDOException $error) {
   echo "Erreur : " . $error->getMessage();
 }

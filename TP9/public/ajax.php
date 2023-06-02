@@ -8,19 +8,30 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
-      $('#client_id').change(function() {
-        var clientID = $(this).val();
-        $.ajax({
-          url: 'get_url.php',
-          type: 'POST',
-          data: { client_id: clientID },
-          success: function(response) {
-            $('#product_id').html(response);
-          },
-          error: function(xhr, status, error) {
-            console.log(xhr.responseText);
-          }
-        });
+      $.ajax({
+        url: 'get_clients.php',
+        type: 'GET',
+        success: function(response) {
+          $('#client_id').html(response);
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
+      });
+    });
+
+    $('#client_id').change(function() {
+      var clientID = $(this).val();
+      $.ajax({
+        url: 'get_products.php',
+        type: 'POST',
+        data: { client_id: clientID },
+        success: function(response) {
+          $('#product_id').html(response);
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr.responseText);
+        }
       });
     });
   </script>
@@ -48,7 +59,6 @@
             </label>
             <select class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name="product_id">
               <option value="">Sélectionnez un client d'abord</option>
-              <div id="product_id"></div>
             </select>
           </div>
         </div>
@@ -61,20 +71,5 @@
       </div>
     </div>
   </div>
-
-  <script>
-    $(document).ready(function() {
-      $.ajax({
-        url: 'get_clients.php',
-        type: 'GET',
-        success: function(response) {
-          $('#client_id').html(response);
-        },
-        error: function(xhr, status, error) {
-          console.log(xhr.responseText);
-        }
-      });
-    });
-  </script>
 </body>
 </html>
